@@ -9,7 +9,8 @@
     "test-unit": "npm test -- --watch -c jest-unit-config.js",
     "test-integration": "npm test -- --watch -c jest-integration-config.js",
     "test-staged": "npm test -- --findRelatedTests",
-    "test-ci": "npm test -- --coverage"
+    "test-ci": "npm test -- --coverage",
+    "build": "rimraf dist && tsc -p tsconfig-build.json"
   },
   "devDependencies": {
     "@shelf/jest-mongodb": "^1.2.3",
@@ -42,6 +43,9 @@
     "module-alias": "^2.2.3",
     "mongodb": "^3.7.3",
     "nodemailer": "^6.7.0"
+  },
+  "_moduleAliases": {
+    "@": "dist"
   },
   "keywords": [],
   "author": "",
