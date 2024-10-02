@@ -2,7 +2,7 @@ import { RegisterUserOnMailingList } from '@/usecases/register-user-on-mailing-l
 import { HttpRequest } from '@/web-controllers/ports'
 import { UserData } from '@/entities'
 import { UserRepository } from '@/usecases/register-user-on-mailing-list/ports'
-import { InMemoryUserRepository } from '@test/usecases/register-user-on-mailing-list/repository'
+import { InMemoryUserRepository } from '@/usecases/register-user-on-mailing-list/repository'
 import { RegisterUserController } from '@/web-controllers/register-user-controller'
 import { HttpResponse } from '@/web-controllers/ports/http-response'
 import { InvalidEmailError, InvalidNameError } from '@/entities/errors'
