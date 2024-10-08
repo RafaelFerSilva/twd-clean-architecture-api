@@ -11,13 +11,13 @@ export class MongodbUserRepository implements UserRepository {
     }
   }
 
-  async findUserByEmail (email: string): Promise<UserData> {
+  async findUserByEmail (email: string): Promise<any> {
     const userCollection = MongoHelper.getCollection('users')
-    const result = await userCollection.findOne({ email: email})
+    const result = await userCollection.findOne({ email: email })
     return (result)
   }
 
-  async findAllUsers (): Promise<UserData[]> {
+  async findAllUsers (): Promise<any[]> {
     return await MongoHelper.getCollection('users').find().toArray()
   }
 
