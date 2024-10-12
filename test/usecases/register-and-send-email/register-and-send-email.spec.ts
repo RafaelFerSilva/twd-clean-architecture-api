@@ -1,4 +1,4 @@
-import { User, UserData } from '@/entities'
+import { UserData } from '@/entities'
 import { Either, right } from '@/shared'
 import { MailServiceError } from '@/usecases/errors/mail-service-error'
 import { RegisterAndSendEmail } from '@/usecases/register-and-send-email'
@@ -43,7 +43,7 @@ describe('Register and send email to user', () => {
     }
   }
 
-  test('should add user with complete data to mailing list', async () => {
+  test('should add user and send email with complete data to mailing list', async () => {
     const users: UserData[] = []
     const repo: UserRepository = new InMemoryUserRepository(users)
 
@@ -54,12 +54,12 @@ describe('Register and send email to user', () => {
 
     const name = 'any_name'
     const email = 'any@email.com'
-    const response = (await registerAndSendEmailUseCase.perform({ name, email })).value as User
+    const response = (await registerAndSendEmailUseCase.perform({ name, email })).value as UserData
     const user = await repo.findUserByEmail('any@email.com')
     expect(user.name).toBe('any_name')
-    expect(response.name.value).toBe('any_name')
+    expect(response.name).toBe('any_name')
     expect(emailServiceMock.timesSendWasCaled).toEqual(1)
-    expect(response.name.value).toEqual('any_name')
+    expect(response.name).toEqual('any_name')
   })
 
   test('should not add user with invalid email to mailing list', async () => {

@@ -22,7 +22,7 @@ describe('Register route', () => {
     await request(app)
       .post('/api/register')
       .send({
-        name: 'Any name',
+        name: 'any_name',
         email: 'any@mail.com'
       })
       .expect(201)
