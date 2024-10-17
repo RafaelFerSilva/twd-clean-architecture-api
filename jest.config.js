@@ -19,7 +19,8 @@ const config = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^@test/(.*)$': '<rootDir>/test/$1'
-  }
+  },
+  setupFiles: ['dotenv/config']
 }
 
 module.exports = config
